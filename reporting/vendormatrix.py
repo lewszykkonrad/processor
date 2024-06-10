@@ -64,7 +64,8 @@ class VendorMatrix(object):
             vmc.api_ss_key: [],
             vmc.api_nz_key: [],
             vmc.api_ytd_key: [],
-            vmc.api_wal_key: []
+            vmc.api_wal_key: [],
+            vmc.api_sim_key: []
         }
         self.ftp_sz_key = []
         self.db_dna_key = []
@@ -767,6 +768,7 @@ class DataSource(object):
             for col in vmc.datafloatcol:
                 self.p[col + vmc.planned_suffix] = self.p[col]
                 float_cols.append(col + vmc.planned_suffix)
+                self.p[col] = 0
         else:
             float_cols = vmc.datafloatcol
         df = combining_data(df, self.key, float_cols, **self.p)
